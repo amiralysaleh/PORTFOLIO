@@ -155,4 +155,141 @@
     <!-- End of bodyEnd -->
 
 
-<iframe id="__framer-editorbar" src="https://framer.com/edit?framerSiteId=b6b93c19b0000b264e3d13b12cbf753621f0e20e381037272aa5e9f0ab983ac2&amp;source=www.bychudy.com&amp;features=%7B%22editorBarDisableFrameAncestorsSecurity%22%3Afalse%2C%22onPageLocalizationSupport%22%3Atrue%2C%22onPageMoveTool%22%3Atrue%7D&amp;loadStart=1792570835724" aria-hidden="true" allow="autoplay" tabindex="-1" class="status_hidden"></iframe></body></html>
+<iframe id="__framer-editorbar" src="https://framer.com/edit?framerSiteId=b6b93c19b0000b264e3d13b12cbf753621f0e20e381037272aa5e9f0ab983ac2&amp;source=www.bychudy.com&amp;features=%7B%22editorBarDisableFrameAncestorsSecurity%22%3Afalse%2C%22onPageLocalizationSupport%22%3Atrue%2C%22onPageMoveTool%22%3Atrue%7D&amp;loadStart=1792570835724" aria-hidden="true" allow="autoplay" tabindex="-1" class="status_hidden"></iframe>
+
+<style id="portfolio-custom-overrides">
+  /* Hide all original portfolio items except the active project container */
+  main > div:not(.framer-1w4tim9-container) {
+    display: none !important;
+  }
+  
+  /* Center and style Nami Sanati icon on desktop */
+  .framer-SRMyU .framer-1w4tim9-container {
+    top: 40% !important;
+    left: 28% !important;
+  }
+  @media (max-width: 809.98px) {
+    .framer-SRMyU .framer-1w4tim9-container {
+      top: 35% !important;
+      left: 50% !important;
+    }
+  }
+</style>
+
+<script>
+(function() {
+  function updateNamiSanati() {
+    // 1. Update Desktop Folder / Icon
+    const container = document.querySelector('.framer-1w4tim9-container');
+    if (container) {
+      const h1 = container.querySelector('h1');
+      if (h1 && h1.textContent !== 'Nami Sanati') {
+        h1.textContent = 'Nami Sanati';
+      }
+      const img = container.querySelector('img');
+      if (img && !img.src.includes('nami-touch-icon.png')) {
+        img.src = './assets/nami-touch-icon.png';
+        img.srcset = './assets/nami-touch-icon.png';
+      }
+    }
+
+    // 2. Update Modal Window whenever .framer-mpqf2l is in DOM
+    const modal = document.querySelector('.framer-mpqf2l');
+    if (modal && modal.getAttribute('data-nami-applied') !== 'v1') {
+      modal.setAttribute('data-nami-applied', 'v1');
+      
+      // Window Title Bar
+      const titleH1 = modal.querySelector('.framer-19da360 h1');
+      if (titleH1) titleH1.textContent = 'Information about: Nami Sanati';
+      
+      // Banner Logo & Titles
+      const miniImg = modal.querySelector('.framer-14qwruk img');
+      if (miniImg) {
+        miniImg.src = './assets/nami-touch-icon.png';
+        miniImg.srcset = './assets/nami-touch-icon.png';
+      }
+      const bTitle = modal.querySelector('.framer-94v0co h1');
+      if (bTitle) bTitle.textContent = 'Nami Sanati';
+      const bSub = modal.querySelector('.framer-1lkfvkw h1');
+      if (bSub) bSub.textContent = 'Fine Perfumery & Online Shop';
+      
+      // Project Description
+      const descContainer = modal.querySelector('.framer-1u8nyh1');
+      if (descContainer) {
+        descContainer.innerHTML = `
+          <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13px; font-weight: 500; text-align: left; color: rgb(122, 122, 122); margin-bottom: 8px;">
+            Designed and developed an elegant, minimalist e-commerce and brand platform for <strong>Nami Sanati</strong> (Fine Perfumery since 2018).
+          </p>
+          <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13px; font-weight: 500; text-align: left; color: rgb(122, 122, 122); margin-bottom: 8px;">
+            The project translates the olfactory journey of fragrances, memories, and travel experiences into a modern digital shopping experience featuring bespoke perfume customization, signature accords, and smooth ordering.
+          </p>
+          <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13px; font-weight: 500; text-align: left; color: rgb(0, 153, 255);">
+            <a href="https://namisanati.com/" target="_blank" style="color: inherit; text-decoration: underline; font-weight: 600;">Visit live website: namisanati.com &rarr;</a>
+          </p>
+        `;
+      }
+      
+      // Project Details Info
+      const typeValue = modal.querySelector('.framer-puakyo h1');
+      if (typeValue) typeValue.textContent = 'E-Commerce Website > UI/UX Design > Web Development > Branding';
+      
+      // Preview Section (Hero and Products Grid)
+      const photosMain = modal.querySelector('.framer-m1e43y');
+      if (photosMain) {
+        photosMain.innerHTML = `
+          <div style="border-radius: 10px; overflow: hidden; margin-bottom: 12px; width: 100%; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+            <img src="./assets/nami-hero.jpg" alt="Nami Sanati Hero" style="display: block; width: 100%; height: auto; border-radius: 10px; object-fit: cover;">
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 12px; width: 100%;">
+            <div style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+              <img src="./assets/yerevan.webp" alt="Yerevan Perfume" style="display: block; width: 100%; object-fit: cover;">
+              <div style="padding: 8px 10px; font-size: 12px; font-weight: 600; color: #333;">عطر ایروان (Yerevan)</div>
+            </div>
+            <div style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+              <img src="./assets/moscow.webp" alt="Moscow Perfume" style="display: block; width: 100%; object-fit: cover;">
+              <div style="padding: 8px 10px; font-size: 12px; font-weight: 600; color: #333;">عطر مسکو (Moscow)</div>
+            </div>
+            <div style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+              <img src="./assets/pooste-narengi.webp" alt="Pooste Narengi" style="display: block; width: 100%; object-fit: cover;">
+              <div style="padding: 8px 10px; font-size: 12px; font-weight: 600; color: #333;">عطر پوست نارنگی</div>
+            </div>
+            <div style="background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06);">
+              <img src="./assets/felfel-soorati.webp" alt="Felfel Soorati" style="display: block; width: 100%; object-fit: cover;">
+              <div style="padding: 8px 10px; font-size: 12px; font-weight: 600; color: #333;">عطر فلفل صورتی</div>
+            </div>
+          </div>
+        `;
+      }
+      
+      // Credits Labels & Values
+      const creditsLabels = modal.querySelector('.framer-1bdww7n');
+      if (creditsLabels) {
+        creditsLabels.innerHTML = `
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: right;">Role:</p>
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: right;">Client:</p>
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: right;">Stack:</p>
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: right;">Live:</p>
+        `;
+      }
+      const creditsValues = modal.querySelector('.framer-qivglz');
+      if (creditsValues) {
+        creditsValues.innerHTML = `
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left;">UI/UX Designer & Web Developer</p>
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left;">Nami Sanati Perfumery</p>
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left;">WordPress, WooCommerce, Custom Responsive CSS</p>
+          <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left;"><a href="https://namisanati.com/" target="_blank" style="color: inherit; text-decoration: underline;">namisanati.com</a></p>
+        `;
+      }
+    }
+  }
+
+  // Observe DOM changes continuously
+  const observer = new MutationObserver(updateNamiSanati);
+  observer.observe(document.body, { childList: true, subtree: true });
+  setInterval(updateNamiSanati, 100);
+  window.addEventListener('DOMContentLoaded', updateNamiSanati);
+  updateNamiSanati();
+})();
+</script>
+
+</body></html>
