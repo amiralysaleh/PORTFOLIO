@@ -158,29 +158,43 @@
 <iframe id="__framer-editorbar" src="https://framer.com/edit?framerSiteId=b6b93c19b0000b264e3d13b12cbf753621f0e20e381037272aa5e9f0ab983ac2&amp;source=www.bychudy.com&amp;features=%7B%22editorBarDisableFrameAncestorsSecurity%22%3Afalse%2C%22onPageLocalizationSupport%22%3Atrue%2C%22onPageMoveTool%22%3Atrue%7D&amp;loadStart=1792570835724" aria-hidden="true" allow="autoplay" tabindex="-1" class="status_hidden"></iframe>
 
 <style id="portfolio-custom-overrides">
-  /* Hide all original desktop items except the 3 active projects */
-  main.framer-af5wz7 > div:not(.framer-1w4tim9-container):not(.framer-17gqvpl-container):not(.framer-10bwery-container) {
+  /* Hide all original desktop items except the 4 active projects */
+  main.framer-af5wz7 > div.ssr-variant {
+    display: none !important;
+  }
+  main.framer-af5wz7 > div.ssr-variant:has(.framer-1w4tim9-container),
+  main.framer-af5wz7 > div.ssr-variant:has(.framer-17gqvpl-container),
+  main.framer-af5wz7 > div.ssr-variant:has(.framer-10bwery-container),
+  main.framer-af5wz7 > div.ssr-variant:has(.framer-142qtus-container) {
+    display: block !important;
+  }
+  main.framer-af5wz7 > div:not(.ssr-variant):not(.framer-1w4tim9-container):not(.framer-17gqvpl-container):not(.framer-10bwery-container):not(.framer-142qtus-container) {
     display: none !important;
   }
   
-  /* Desktop Layout - 3 Projects */
-  main.framer-af5wz7 > .framer-1w4tim9-container {
+  /* Desktop Layout - 4 Projects Symmetrically Distributed */
+  .framer-1w4tim9-container {
     top: 38% !important;
-    left: 24% !important;
+    left: 20% !important;
     display: block !important;
   }
-  main.framer-af5wz7 > .framer-17gqvpl-container {
+  .framer-17gqvpl-container {
     top: 38% !important;
-    left: 38% !important;
+    left: 35% !important;
     display: block !important;
   }
-  main.framer-af5wz7 > .framer-10bwery-container {
+  .framer-10bwery-container {
     top: 38% !important;
-    left: 52% !important;
+    left: 50% !important;
+    display: block !important;
+  }
+  .framer-142qtus-container {
+    top: 38% !important;
+    left: 65% !important;
     display: block !important;
   }
   
-  /* Enforce exact 60px square squircle size for Reuben Hills matching Nami Sanati and Melk Cafe */
+  /* Enforce exact 60px square squircle size for Reuben Hills matching other icons */
   .framer-10bwery-container .framer-mzzyye,
   .framer-cztFP .framer-mzzyye,
   .framer-10bwery-container [data-framer-name="Project Cover"] {
@@ -213,23 +227,48 @@
     object-fit: cover !important;
     border-radius: 14px !important;
   }
+
+  /* Enforce exact 60px square squircle size for HyperSignal matching other icons */
+  .framer-142qtus-container .framer-amqw2o,
+  .framer-142qtus-container [data-framer-name="Project Cover"] {
+    width: 60px !important;
+    height: 60px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+  }
+  .framer-142qtus-container .framer-1ecyytc,
+  .framer-142qtus-container .framer-13nn2z7 {
+    width: 60px !important;
+    align-items: center !important;
+  }
+  .framer-142qtus-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
+  }
   
-  /* Mobile Responsive Layout */
+  /* Mobile Responsive Layout - 4 Projects Stacked */
   @media (max-width: 809.98px) {
-    main.framer-af5wz7 > .framer-1w4tim9-container {
-      top: 25% !important;
+    .framer-1w4tim9-container {
+      top: 18% !important;
       left: 50% !important;
     }
-    main.framer-af5wz7 > .framer-17gqvpl-container {
-      top: 42% !important;
+    .framer-17gqvpl-container {
+      top: 35% !important;
       left: 50% !important;
     }
-    main.framer-af5wz7 > .framer-10bwery-container {
-      top: 59% !important;
+    .framer-10bwery-container {
+      top: 52% !important;
+      left: 50% !important;
+    }
+    .framer-142qtus-container {
+      top: 69% !important;
       left: 50% !important;
     }
   }
-
+  
   /* Modal preview container auto height */
   .framer-HVQNS .framer-m1e43y,
   .framer-mpqf2l .framer-m1e43y {
@@ -289,6 +328,29 @@
         img.style.setProperty('border-radius', '14px', 'important');
       }
       const cover = cReuben.querySelector('.framer-mzzyye, [data-framer-name="Project Cover"]');
+      if (cover) {
+        cover.style.setProperty('width', '60px', 'important');
+        cover.style.setProperty('height', '60px', 'important');
+        cover.style.setProperty('aspect-ratio', '1 / 1', 'important');
+        cover.style.setProperty('border-radius', '14px', 'important');
+        cover.style.setProperty('overflow', 'hidden', 'important');
+      }
+    }
+
+    // 4. HyperSignal Desktop Icon
+    const cHyper = document.querySelector('.framer-142qtus-container');
+    if (cHyper) {
+      const h1 = cHyper.querySelector('h1');
+      if (h1 && h1.textContent !== 'HYPERSIGNAL') {
+        h1.textContent = 'HYPERSIGNAL';
+      }
+      const img = cHyper.querySelector('img');
+      if (img && (!img.src.includes('hypersignal-touch-icon.png') || img.srcset !== './assets/hypersignal-touch-icon.png')) {
+        img.src = './assets/hypersignal-touch-icon.png';
+        img.srcset = './assets/hypersignal-touch-icon.png';
+        img.style.setProperty('border-radius', '14px', 'important');
+      }
+      const cover = cHyper.querySelector('.framer-amqw2o, [data-framer-name="Project Cover"]');
       if (cover) {
         cover.style.setProperty('width', '60px', 'important');
         cover.style.setProperty('height', '60px', 'important');
@@ -646,6 +708,189 @@
               </div>
             `;
             d35.appendChild(bodyDiv);
+          }
+        }
+      }
+
+      // --- HYPERSIGNAL MODAL ---
+      else if (portalId === '142qtus' || text.includes('Merch') || text.includes('HyperSignal') || text.includes('HYPERSIGNAL')) {
+        if (win.getAttribute('data-project-applied') !== 'hypersignal-v1') {
+          win.setAttribute('data-project-applied', 'hypersignal-v1');
+
+          // Window Title Bar
+          const titleH1 = win.querySelector('.framer-19da360 h1') || win.querySelector('header h1') || win.querySelector('nav h1');
+          if (titleH1) titleH1.textContent = 'Information about: HyperSignal v2';
+
+          // Header
+          const header = win.querySelector('.framer-6cuyvt');
+          if (header) {
+            header.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 14px; width: 100%; margin-bottom: 8px;">
+                <img src="./assets/hypersignal-touch-icon.png" alt="HyperSignal Icon" style="width: 58px; height: 58px; border-radius: 14px; box-shadow: 0 4px 14px rgba(0,240,255,0.25); display: block; flex-shrink: 0;">
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                  <h1 class="framer-text" style="font-size: 21px; font-weight: 800; line-height: 1.2; margin: 0; color: #111;">HyperSignal v2</h1>
+                  <h2 style="font-size: 13px; font-weight: 500; color: #718096; margin: 2px 0 0 0;">Autonomous On-Chain Whale Consensus Tracker & Signal Engine (Hyperliquid L1)</h2>
+                </div>
+              </div>
+            `;
+          } else {
+            const headerImg = win.querySelector('.framer-14qwruk img') || win.querySelector('header img') || win.querySelectorAll('img')[0];
+            if (headerImg) {
+              headerImg.src = './assets/hypersignal-touch-icon.png';
+              headerImg.srcset = './assets/hypersignal-touch-icon.png';
+              headerImg.style.setProperty('border-radius', '14px', 'important');
+            }
+            const bTitle = win.querySelector('.framer-94v0co h1');
+            if (bTitle) bTitle.textContent = 'HyperSignal v2';
+            const bSub = win.querySelector('.framer-1lkfvkw h1');
+            if (bSub) bSub.textContent = 'On-Chain Whale Consensus Tracker & Signal Engine (Hyperliquid L1)';
+          }
+
+          // Container for description & preview
+          const d35 = win.querySelector('.framer-rkv06i > div');
+          if (d35) {
+            const existingHeader = d35.children[0];
+            d35.innerHTML = '';
+            if (existingHeader) d35.appendChild(existingHeader);
+
+            const bodyDiv = document.createElement('div');
+            bodyDiv.innerHTML = `
+              <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 14px 16px; margin: 12px 0; backdrop-filter: blur(10px);">
+                <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #2d3748; margin: 0 0 10px 0;">
+                  Architected and engineered <strong>HyperSignal v2</strong>, an autonomous quantitative trading intelligence platform and smart-money consensus engine operating directly on the <strong>Hyperliquid Layer 1</strong> decentralized perpetuals protocol.
+                </p>
+                <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #4a5568; margin: 0 0 12px 0;">
+                  The system continuously monitors 44 high-performing smart money wallets on-chain, detects multi-wallet fill co-occurrence within 120-second windows, calculates quantitative consensus scores, and triggers automated risk-managed trade signals (TP1/TP2/TP3 & dynamic Stop Loss) dispatched to Telegram within 420ms.
+                </p>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                  <a href="https://hypersignal-v2.amirali-saleh24.workers.dev/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #0b1522; color: #00f0ff; border: 1px solid rgba(0,240,255,0.4); text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,240,255,0.2);">
+                    <span>Visit Live Dashboard</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                  </a>
+                  <a href="https://github.com/amiralysaleh/hypersignal-v2" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #24292f; color: #ffffff; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.25);">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+                    <span>GitHub Repository</span>
+                  </a>
+                </div>
+              </div>
+
+              <div style="margin: 14px 0 6px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Type:</div>
+              <div style="font-size: 13.5px; font-weight: 600; color: #2d3748; margin-bottom: 16px;">Web3 Quant Platform &gt; On-Chain Signal Engine &gt; Cloudflare Edge Architecture &gt; Full-Stack Next.js 15</div>
+
+              <div style="margin: 16px 0 8px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Preview:</div>
+              <div style="border-radius: 12px; overflow: hidden; margin-bottom: 14px; width: 100%; box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
+                <img src="./assets/hypersignal-hero-dashboard.png" alt="HyperSignal Hero Dashboard" style="display: block; width: 100%; height: auto; border-radius: 12px; object-fit: cover;">
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; width: 100%;">
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #0c121c;">
+                    <img src="./assets/hypersignal-signals-showcase.png" alt="Cluster Fill Breakdown" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Cluster Audit & Telegram Relay</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Multi-whale fill co-occurrence analysis with 420ms automated Telegram broadcast.</div>
+                  </div>
+                </div>
+
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #0c121c;">
+                    <img src="./assets/hypersignal-architecture.png" alt="Cloudflare Edge Architecture" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Cloudflare Edge Infrastructure</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">OpenNext Next.js 15, Durable Objects alarm triggers, and distributed D1 SQL database.</div>
+                  </div>
+                </div>
+
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #07090e;">
+                    <img src="./assets/hypersignal-dashboard-live.png" alt="CRT Boot Terminal" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Retro Cyberpunk CRT Interface</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Custom phosphor scanlines, CRT vignette shader, and typewriter boot animations.</div>
+                  </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #070b12 0%, #0d1624 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 16px; color: #ffffff; text-align: center; border: 1px solid rgba(0,240,255,0.2);">
+                  <img src="./assets/hypersignal-touch-icon.png" alt="HyperSignal Icon" style="width: 58px; height: 58px; margin-bottom: 10px; border-radius: 14px; box-shadow: 0 4px 14px rgba(0,240,255,0.35);">
+                  <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.05em; color: #00f0ff;">HYPERSIGNAL</div>
+                  <div style="font-size: 11px; opacity: 0.85; margin-top: 3px;">Autonomous On-Chain Consensus &bull; v2.0</div>
+                </div>
+              </div>
+
+              <div style="margin: 16px 0 8px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Credits:</div>
+              <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px 14px; font-size: 12.5px; margin-bottom: 18px;">
+                <div style="text-align: right; color: #718096; font-weight: 600;">Creator:</div>
+                <div style="color: #1a202c; font-weight: 600;">Amirali Saleh (Solo Architect & Developer)</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Project:</div>
+                <div style="color: #1a202c; font-weight: 600;">HyperSignal v2 (Crypto Trading & Whale Consensus)</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Stack:</div>
+                <div style="color: #1a202c; font-weight: 600;">Next.js 15, React 19, TypeScript, Cloudflare Workers (OpenNext), D1, Durable Objects, Telegram Bot API, Tailwind CSS</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Live:</div>
+                <div><a href="https://hypersignal-v2.amirali-saleh24.workers.dev/" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 600; text-decoration: underline;">hypersignal-v2.amirali-saleh24.workers.dev</a></div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Code:</div>
+                <div><a href="https://github.com/amiralysaleh/hypersignal-v2" target="_blank" rel="noopener noreferrer" style="color: #0284c7; font-weight: 600; text-decoration: underline;">github.com/amiralysaleh/hypersignal-v2</a></div>
+              </div>
+            `;
+            d35.appendChild(bodyDiv);
+          } else {
+            // Standard modal fallback
+            const descContainer = win.querySelector('.framer-1u8nyh1, .framer-1ceu7sa');
+            if (descContainer) {
+              descContainer.innerHTML = `
+                <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; backdrop-filter: blur(10px);">
+                  <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #2d3748; margin: 0 0 10px 0;">
+                    Architected and engineered <strong>HyperSignal v2</strong>, an autonomous quantitative trading intelligence platform and smart-money consensus engine operating on the <strong>Hyperliquid Layer 1</strong> decentralized perpetuals protocol.
+                  </p>
+                  <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #4a5568; margin: 0 0 12px 0;">
+                    The system monitors 44 top smart money wallets on-chain, detects multi-wallet fill co-occurrence within 120s windows, calculates consensus scores, and triggers automated risk-managed trade signals (TP1/TP2/TP3 & dynamic Stop Loss) dispatched to Telegram within 420ms.
+                  </p>
+                  <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <a href="https://hypersignal-v2.amirali-saleh24.workers.dev/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #0b1522; color: #00f0ff; border: 1px solid rgba(0,240,255,0.4); text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700;">
+                      <span>Visit Live Dashboard</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </a>
+                    <a href="https://github.com/amiralysaleh/hypersignal-v2" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #24292f; color: #ffffff; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 600;">
+                      <span>GitHub</span>
+                    </a>
+                  </div>
+                </div>
+              `;
+            }
+
+            const typeValue = win.querySelector('.framer-puakyo h1');
+            if (typeValue) typeValue.textContent = 'Web3 Quant Platform > On-Chain Signal Engine > Cloudflare Edge Architecture';
+
+            const previewContainer = win.querySelector('.framer-m1e43y, .framer-12p9m7w');
+            if (previewContainer) {
+              previewContainer.style.setProperty('height', 'auto', 'important');
+              previewContainer.style.setProperty('min-height', 'auto', 'important');
+              previewContainer.innerHTML = `
+                <div style="border-radius: 12px; overflow: hidden; margin-bottom: 14px; width: 100%; box-shadow: 0 4px 16px rgba(0,0,0,0.12);">
+                  <img src="./assets/hypersignal-hero-dashboard.png" alt="HyperSignal Hero" style="display: block; width: 100%; height: auto; border-radius: 12px; object-fit: cover;">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; width: 100%;">
+                  <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06);">
+                    <img src="./assets/hypersignal-signals-showcase.png" alt="Signals Showcase" style="display: block; width: 100%; height: auto; object-fit: cover;">
+                  </div>
+                  <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06);">
+                    <img src="./assets/hypersignal-architecture.png" alt="Edge Architecture" style="display: block; width: 100%; height: auto; object-fit: cover;">
+                  </div>
+                </div>
+              `;
+            }
+
+            const creditsValues = win.querySelector('.framer-qivglz, .framer-111hw30');
+            if (creditsValues) {
+              creditsValues.innerHTML = `
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">Amirali Saleh (Solo Architect & Developer)</p>
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">HyperSignal v2 (Crypto Trading & Whale Consensus)</p>
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">Next.js 15, React 19, TypeScript, Cloudflare Workers, D1, Durable Objects, Telegram API</p>
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; font-weight: 600;"><a href="https://hypersignal-v2.amirali-saleh24.workers.dev/" target="_blank" rel="noopener noreferrer" style="color: #0284c7; text-decoration: underline;">hypersignal-v2.amirali-saleh24.workers.dev</a></p>
+              `;
+            }
           }
         }
       }
