@@ -9,7 +9,7 @@
     <!-- End of headStart -->
 	<meta name="viewport" content="width=device-width">
 	<meta name="generator" content="Framer 48eb0fe">
-	<title>Portfolio</title>
+	<title>byAmiraly</title>
     <meta name="description" content="">
     <meta name="framer-search-index" content="https://framerusercontent.com/sites/73pIc0Rocq5ZD8kZ5Jhz3S/searchIndex-qIXLxUyYJD8k.json">
     <meta name="framer-search-index-fallback" content="https://framerusercontent.com/sites/73pIc0Rocq5ZD8kZ5Jhz3S/searchIndex-joAgHniPyi4W.json">
@@ -158,31 +158,40 @@
 <iframe id="__framer-editorbar" src="https://framer.com/edit?framerSiteId=b6b93c19b0000b264e3d13b12cbf753621f0e20e381037272aa5e9f0ab983ac2&amp;source=www.bychudy.com&amp;features=%7B%22editorBarDisableFrameAncestorsSecurity%22%3Afalse%2C%22onPageLocalizationSupport%22%3Atrue%2C%22onPageMoveTool%22%3Atrue%7D&amp;loadStart=1792570835724" aria-hidden="true" allow="autoplay" tabindex="-1" class="status_hidden"></iframe>
 
 <style id="portfolio-custom-overrides">
-  /* Hide all original desktop items except the active projects */
-  main.framer-af5wz7 > div:not(.framer-1w4tim9-container):not(.framer-17gqvpl-container) {
+  /* Hide all original desktop items except the 3 active projects */
+  main.framer-af5wz7 > div:not(.framer-1w4tim9-container):not(.framer-17gqvpl-container):not(.framer-10bwery-container) {
     display: none !important;
   }
   
-  /* Desktop Layout */
+  /* Desktop Layout - 3 Projects */
   main.framer-af5wz7 > .framer-1w4tim9-container {
     top: 38% !important;
-    left: 28% !important;
+    left: 24% !important;
     display: block !important;
   }
   main.framer-af5wz7 > .framer-17gqvpl-container {
     top: 38% !important;
-    left: 45% !important;
+    left: 38% !important;
+    display: block !important;
+  }
+  main.framer-af5wz7 > .framer-10bwery-container {
+    top: 38% !important;
+    left: 52% !important;
     display: block !important;
   }
   
   /* Mobile Responsive Layout */
   @media (max-width: 809.98px) {
     main.framer-af5wz7 > .framer-1w4tim9-container {
-      top: 30% !important;
+      top: 25% !important;
       left: 50% !important;
     }
     main.framer-af5wz7 > .framer-17gqvpl-container {
-      top: 48% !important;
+      top: 42% !important;
+      left: 50% !important;
+    }
+    main.framer-af5wz7 > .framer-10bwery-container {
+      top: 59% !important;
       left: 50% !important;
     }
   }
@@ -197,6 +206,12 @@
 
 <script>
 (function() {
+  function ensureTitle() {
+    if (document.title !== 'byAmiraly') {
+      document.title = 'byAmiraly';
+    }
+  }
+
   function updateDesktopIcons() {
     // 1. Nami Sanati Desktop Icon
     const cNami = document.querySelector('.framer-1w4tim9-container');
@@ -225,6 +240,20 @@
         img.srcset = './assets/melk-touch-icon.png';
       }
     }
+
+    // 3. Reuben Hills Desktop Icon
+    const cReuben = document.querySelector('.framer-10bwery-container');
+    if (cReuben) {
+      const h1 = cReuben.querySelector('h1');
+      if (h1 && h1.textContent !== 'REUBEN HILLS') {
+        h1.textContent = 'REUBEN HILLS';
+      }
+      const img = cReuben.querySelector('img');
+      if (img && (!img.src.includes('reuben-touch-icon.png') || img.srcset !== './assets/reuben-touch-icon.png')) {
+        img.src = './assets/reuben-touch-icon.png';
+        img.srcset = './assets/reuben-touch-icon.png';
+      }
+    }
   }
 
   function updateModals() {
@@ -240,8 +269,8 @@
 
       // --- NAMI SANATI MODAL ---
       if (portalId === '1w4tim9' || text.includes('Szept') || text.includes('Nami Sanati')) {
-        if (win.getAttribute('data-project-applied') !== 'nami-v2') {
-          win.setAttribute('data-project-applied', 'nami-v2');
+        if (win.getAttribute('data-project-applied') !== 'nami-v3') {
+          win.setAttribute('data-project-applied', 'nami-v3');
 
           // Window Title Bar
           const titleH1 = win.querySelector('.framer-19da360 h1');
@@ -357,8 +386,8 @@
 
       // --- MELK CAFÉ MODAL ---
       else if (portalId === '17gqvpl' || text.includes('Vinyls') || text.includes('Melk')) {
-        if (win.getAttribute('data-project-applied') !== 'melk-v2') {
-          win.setAttribute('data-project-applied', 'melk-v2');
+        if (win.getAttribute('data-project-applied') !== 'melk-v3') {
+          win.setAttribute('data-project-applied', 'melk-v3');
 
           // Window Title Bar
           const titleH1 = win.querySelector('.framer-19da360 h1');
@@ -467,10 +496,121 @@
           }
         }
       }
+
+      // --- REUBEN HILLS MODAL ---
+      else if (portalId === '10bwery' || text.includes('Stage visuals') || text.includes('Reuben Hills') || text.includes('Kacperczyk')) {
+        if (win.getAttribute('data-project-applied') !== 'reuben-v1') {
+          win.setAttribute('data-project-applied', 'reuben-v1');
+
+          // Window Title Bar
+          const titleH1 = win.querySelector('.framer-19da360 h1');
+          if (titleH1) titleH1.textContent = 'Information about: Reuben Hills';
+
+          // Header
+          const header = win.querySelector('.framer-6cuyvt');
+          if (header) {
+            header.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 14px; width: 100%; margin-bottom: 8px;">
+                <img src="./assets/reuben-touch-icon.png" alt="Reuben Hills Icon" style="width: 58px; height: 58px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.15); display: block; flex-shrink: 0;">
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                  <h1 class="framer-text" style="font-size: 21px; font-weight: 800; line-height: 1.2; margin: 0; color: #111;">Reuben Hills</h1>
+                  <h2 style="font-size: 13px; font-weight: 500; color: #718096; margin: 2px 0 0 0;">Specialty Coffee Roastery & Café (Surry Hills & Marrickville, Sydney)</h2>
+                </div>
+              </div>
+            `;
+          }
+
+          // Container for description & preview
+          const d35 = win.querySelector('.framer-rkv06i > div');
+          if (d35) {
+            const existingHeader = d35.children[0];
+            d35.innerHTML = '';
+            d35.appendChild(existingHeader);
+
+            const bodyDiv = document.createElement('div');
+            bodyDiv.innerHTML = `
+              <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 14px 16px; margin: 12px 0; backdrop-filter: blur(10px);">
+                <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #2d3748; margin: 0 0 10px 0;">
+                  Designed and developed the modern e-commerce platform, multi-venue digital presence, and coffee subscription portal for <strong>Reuben Hills</strong>, Sydney's premier specialty coffee roastery established in Surry Hills in 2012.
+                </p>
+                <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #4a5568; margin: 0 0 12px 0;">
+                  The experience features the bespoke <strong>Sub Club</strong> recurring subscription builder, origin transparency stories from direct trade coffee trips worldwide, seamless Shopify & Shop Pay checkout with multi-currency support, and menu showcases for their Surry Hills café and Marrickville roastery.
+                </p>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                  <a href="https://www.reubenhills.com.au/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #141414; color: #ffffff; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 600; box-shadow: 0 2px 6px rgba(0,0,0,0.25);">
+                    <span>Visit live website (reubenhills.com.au)</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                  </a>
+                </div>
+              </div>
+
+              <div style="margin: 14px 0 6px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Type:</div>
+              <div style="font-size: 13.5px; font-weight: 600; color: #2d3748; margin-bottom: 16px;">E-Commerce Platform &gt; UI/UX Design &gt; Sub Club Subscription &gt; Custom Web Development</div>
+
+              <div style="margin: 16px 0 8px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Preview:</div>
+              <div style="border-radius: 12px; overflow: hidden; margin-bottom: 14px; width: 100%; box-shadow: 0 4px 16px rgba(0,0,0,0.08);">
+                <img src="./assets/rh-hero-roastery.png" alt="Reuben Hills Roastery Hero" style="display: block; width: 100%; height: auto; border-radius: 12px; object-fit: cover;">
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; width: 100%;">
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #f9f9f9;">
+                    <img src="./assets/rh-subclub-banner.png" alt="Sub Club Subscription" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Sub Club Subscription Box</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Custom recurring coffee club with Hario V60 drippers, single-origin lots, and curated merchandise.</div>
+                  </div>
+                </div>
+
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #fdfbf7;">
+                    <img src="./assets/rh-cafe-interior.jpg" alt="Surry Hills Café" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Surry Hills Flagship Café</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Specialty drinks menu, cold brew, single-origin espresso bar, and artisanal kitchen offerings.</div>
+                  </div>
+                </div>
+
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #fafafa; display: flex; align-items: center; justify-content: center; padding: 12px;">
+                    <img src="./assets/rh-house-blend.png" alt="House Blend Label" style="max-width: 90%; max-height: 90%; object-fit: contain;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">House Blend & Label System</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Minimalist Scandinavian typography with repeating watermark patterns and tasting notes.</div>
+                  </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #181818 0%, #0d0d0d 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 16px; color: #ffffff; text-align: center;">
+                  <img src="./assets/reuben-touch-icon.png" alt="Reuben Hills Icon" style="width: 58px; height: 58px; margin-bottom: 10px; border-radius: 14px; box-shadow: 0 4px 12px rgba(0,0,0,0.3);">
+                  <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.04em;">REUBEN HILLS</div>
+                  <div style="font-size: 11px; opacity: 0.85; margin-top: 3px;">Sourced Worldwide &bull; Roasted in Marrickville</div>
+                </div>
+              </div>
+
+              <div style="margin: 16px 0 8px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Credits:</div>
+              <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px 14px; font-size: 12.5px; margin-bottom: 18px;">
+                <div style="text-align: right; color: #718096; font-weight: 600;">Role:</div>
+                <div style="color: #1a202c; font-weight: 600;">UI/UX Designer & Web Developer</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Client:</div>
+                <div style="color: #1a202c; font-weight: 600;">Reuben Hills Coffee (Sydney, Australia)</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Stack:</div>
+                <div style="color: #1a202c; font-weight: 600;">Shopify, Liquid, Responsive CSS, Shop Pay, Multi-Currency</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Live:</div>
+                <div><a href="https://www.reubenhills.com.au/" target="_blank" rel="noopener noreferrer" style="color: #111111; font-weight: 600; text-decoration: underline;">reubenhills.com.au</a></div>
+              </div>
+            `;
+            d35.appendChild(bodyDiv);
+          }
+        }
+      }
     });
   }
 
   function updateAll() {
+    ensureTitle();
     updateDesktopIcons();
     updateModals();
   }
