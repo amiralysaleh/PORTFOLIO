@@ -180,6 +180,40 @@
     display: block !important;
   }
   
+  /* Enforce exact 60px square squircle size for Reuben Hills matching Nami Sanati and Melk Cafe */
+  .framer-10bwery-container .framer-mzzyye,
+  .framer-cztFP .framer-mzzyye,
+  .framer-10bwery-container [data-framer-name="Project Cover"] {
+    width: 60px !important;
+    height: 60px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+  }
+  .framer-10bwery-container .framer-d606u3 {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .framer-10bwery-container .framer-1vbbn0u {
+    width: 60px !important;
+    align-items: center !important;
+  }
+  .framer-10bwery-container .framer-cztFP {
+    align-items: center !important;
+  }
+  .framer-cztFP.hover .framer-mzzyye,
+  .framer-cztFP:hover .framer-mzzyye,
+  .framer-cztFP.framer-v-16p7bue.hover .framer-mzzyye {
+    width: 70px !important;
+    height: 70px !important;
+  }
+  .framer-10bwery-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
+  }
+  
   /* Mobile Responsive Layout */
   @media (max-width: 809.98px) {
     main.framer-af5wz7 > .framer-1w4tim9-container {
@@ -252,6 +286,15 @@
       if (img && (!img.src.includes('reuben-touch-icon.png') || img.srcset !== './assets/reuben-touch-icon.png')) {
         img.src = './assets/reuben-touch-icon.png';
         img.srcset = './assets/reuben-touch-icon.png';
+        img.style.setProperty('border-radius', '14px', 'important');
+      }
+      const cover = cReuben.querySelector('.framer-mzzyye, [data-framer-name="Project Cover"]');
+      if (cover) {
+        cover.style.setProperty('width', '60px', 'important');
+        cover.style.setProperty('height', '60px', 'important');
+        cover.style.setProperty('aspect-ratio', '1 / 1', 'important');
+        cover.style.setProperty('border-radius', '14px', 'important');
+        cover.style.setProperty('overflow', 'hidden', 'important');
       }
     }
   }
