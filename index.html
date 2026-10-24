@@ -158,29 +158,30 @@
 <iframe id="__framer-editorbar" src="https://framer.com/edit?framerSiteId=b6b93c19b0000b264e3d13b12cbf753621f0e20e381037272aa5e9f0ab983ac2&amp;source=www.bychudy.com&amp;features=%7B%22editorBarDisableFrameAncestorsSecurity%22%3Afalse%2C%22onPageLocalizationSupport%22%3Atrue%2C%22onPageMoveTool%22%3Atrue%7D&amp;loadStart=1792570835724" aria-hidden="true" allow="autoplay" tabindex="-1" class="status_hidden"></iframe>
 
 <style id="portfolio-custom-overrides">
-  /* Hide all original desktop items except the 4 active projects */
+  /* Hide all original desktop items except the 5 active projects */
   main.framer-af5wz7 > div.ssr-variant {
     display: none !important;
   }
   main.framer-af5wz7 > div.ssr-variant:has(.framer-1w4tim9-container),
   main.framer-af5wz7 > div.ssr-variant:has(.framer-17gqvpl-container),
   main.framer-af5wz7 > div.ssr-variant:has(.framer-10bwery-container),
-  main.framer-af5wz7 > div.ssr-variant:has(.framer-142qtus-container) {
+  main.framer-af5wz7 > div.ssr-variant:has(.framer-142qtus-container),
+  main.framer-af5wz7 > div.ssr-variant:has(.framer-56um7k-container) {
     display: block !important;
   }
-  main.framer-af5wz7 > div:not(.ssr-variant):not(.framer-1w4tim9-container):not(.framer-17gqvpl-container):not(.framer-10bwery-container):not(.framer-142qtus-container) {
+  main.framer-af5wz7 > div:not(.ssr-variant):not(.framer-1w4tim9-container):not(.framer-17gqvpl-container):not(.framer-10bwery-container):not(.framer-142qtus-container):not(.framer-56um7k-container) {
     display: none !important;
   }
   
-  /* Desktop Layout - 4 Projects Symmetrically Distributed */
+  /* Desktop Layout - 5 Projects Symmetrically Distributed */
   .framer-1w4tim9-container {
     top: 38% !important;
-    left: 20% !important;
+    left: 14% !important;
     display: block !important;
   }
   .framer-17gqvpl-container {
     top: 38% !important;
-    left: 35% !important;
+    left: 32% !important;
     display: block !important;
   }
   .framer-10bwery-container {
@@ -190,7 +191,12 @@
   }
   .framer-142qtus-container {
     top: 38% !important;
-    left: 65% !important;
+    left: 68% !important;
+    display: block !important;
+  }
+  .framer-56um7k-container {
+    top: 38% !important;
+    left: 86% !important;
     display: block !important;
   }
   
@@ -248,23 +254,48 @@
     object-fit: cover !important;
     border-radius: 14px !important;
   }
+
+  /* Enforce exact 60px square squircle size for Bamika matching other icons */
+  .framer-56um7k-container .framer-m6jbrw,
+  .framer-56um7k-container [data-framer-name="Project Cover"] {
+    width: 60px !important;
+    height: 60px !important;
+    aspect-ratio: 1 / 1 !important;
+    border-radius: 14px !important;
+    overflow: hidden !important;
+  }
+  .framer-56um7k-container .framer-1ecyytc,
+  .framer-56um7k-container .framer-13nn2z7 {
+    width: 60px !important;
+    align-items: center !important;
+  }
+  .framer-56um7k-container img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 14px !important;
+  }
   
-  /* Mobile Responsive Layout - 4 Projects Stacked */
+  /* Mobile Responsive Layout - 5 Projects Stacked */
   @media (max-width: 809.98px) {
     .framer-1w4tim9-container {
-      top: 18% !important;
+      top: 15% !important;
       left: 50% !important;
     }
     .framer-17gqvpl-container {
-      top: 35% !important;
+      top: 30% !important;
       left: 50% !important;
     }
     .framer-10bwery-container {
-      top: 52% !important;
+      top: 45% !important;
       left: 50% !important;
     }
     .framer-142qtus-container {
-      top: 69% !important;
+      top: 60% !important;
+      left: 50% !important;
+    }
+    .framer-56um7k-container {
+      top: 75% !important;
       left: 50% !important;
     }
   }
@@ -351,6 +382,29 @@
         img.style.setProperty('border-radius', '14px', 'important');
       }
       const cover = cHyper.querySelector('.framer-amqw2o, [data-framer-name="Project Cover"]');
+      if (cover) {
+        cover.style.setProperty('width', '60px', 'important');
+        cover.style.setProperty('height', '60px', 'important');
+        cover.style.setProperty('aspect-ratio', '1 / 1', 'important');
+        cover.style.setProperty('border-radius', '14px', 'important');
+        cover.style.setProperty('overflow', 'hidden', 'important');
+      }
+    }
+
+    // 5. Bamika Desktop Icon
+    const cBamika = document.querySelector('.framer-56um7k-container');
+    if (cBamika) {
+      const h1 = cBamika.querySelector('h1');
+      if (h1 && h1.textContent !== 'BAMIKA') {
+        h1.textContent = 'BAMIKA';
+      }
+      const img = cBamika.querySelector('img');
+      if (img && (!img.src.includes('bamika-touch-icon.png') || img.srcset !== './assets/bamika-touch-icon.png')) {
+        img.src = './assets/bamika-touch-icon.png';
+        img.srcset = './assets/bamika-touch-icon.png';
+        img.style.setProperty('border-radius', '14px', 'important');
+      }
+      const cover = cBamika.querySelector('.framer-m6jbrw, [data-framer-name="Project Cover"]');
       if (cover) {
         cover.style.setProperty('width', '60px', 'important');
         cover.style.setProperty('height', '60px', 'important');
@@ -603,7 +657,7 @@
       }
 
       // --- REUBEN HILLS MODAL ---
-      else if (portalId === '10bwery' || text.includes('Stage visuals') || text.includes('Reuben Hills') || text.includes('Kacperczyk')) {
+      else if (portalId === '10bwery' || text.includes('Stage visuals') || text.includes('Reuben Hills')) {
         if (win.getAttribute('data-project-applied') !== 'reuben-v1') {
           win.setAttribute('data-project-applied', 'reuben-v1');
 
@@ -713,7 +767,7 @@
       }
 
       // --- HYPERSIGNAL MODAL ---
-      else if (portalId === '142qtus' || text.includes('Merch') || text.includes('HyperSignal') || text.includes('HYPERSIGNAL')) {
+      else if (portalId === '142qtus' || text.includes('Merch')) {
         if (win.getAttribute('data-project-applied') !== 'hypersignal-v1') {
           win.setAttribute('data-project-applied', 'hypersignal-v1');
 
@@ -889,6 +943,184 @@
                 <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">HyperSignal v2 (Crypto Trading & Whale Consensus)</p>
                 <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">Next.js 15, React 19, TypeScript, Cloudflare Workers, D1, Durable Objects, Telegram API</p>
                 <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; font-weight: 600;"><a href="https://hypersignal-v2.amirali-saleh24.workers.dev/" target="_blank" rel="noopener noreferrer" style="color: #0284c7; text-decoration: underline;">hypersignal-v2.amirali-saleh24.workers.dev</a></p>
+              `;
+            }
+          }
+        }
+      }
+      // --- BAMIKA MODAL ---
+      else if (portalId === '56um7k' || text.includes('Kacperczyk')) {
+        if (win.getAttribute('data-project-applied') !== 'bamika-v1') {
+          win.setAttribute('data-project-applied', 'bamika-v1');
+
+          // Window Title Bar
+          const titleH1 = win.querySelector('.framer-19da360 h1') || win.querySelector('header h1') || win.querySelector('nav h1');
+          if (titleH1) titleH1.textContent = 'Information about: Bamika';
+
+          // Header
+          const header = win.querySelector('.framer-6cuyvt');
+          if (header) {
+            header.innerHTML = `
+              <div style="display: flex; align-items: center; gap: 14px; width: 100%; margin-bottom: 8px;">
+                <img src="./assets/bamika-touch-icon.png" alt="Bamika Icon" style="width: 58px; height: 58px; border-radius: 14px; box-shadow: 0 4px 14px rgba(0,168,79,0.2); display: block; flex-shrink: 0; border: 1px solid rgba(0,0,0,0.06);">
+                <div style="display: flex; flex-direction: column; justify-content: center;">
+                  <h1 class="framer-text" style="font-size: 21px; font-weight: 800; line-height: 1.2; margin: 0; color: #111;">Bamika</h1>
+                  <h2 style="font-size: 13px; font-weight: 500; color: #718096; margin: 2px 0 0 0;">Fresh Food Retailer & Gourmet Catering E-Commerce Platform (بامیکا)</h2>
+                </div>
+              </div>
+            `;
+          } else {
+            const headerImg = win.querySelector('.framer-14qwruk img') || win.querySelector('header img') || win.querySelectorAll('img')[0];
+            if (headerImg) {
+              headerImg.src = './assets/bamika-touch-icon.png';
+              headerImg.srcset = './assets/bamika-touch-icon.png';
+              headerImg.style.setProperty('border-radius', '14px', 'important');
+            }
+            const bTitle = win.querySelector('.framer-94v0co h1');
+            if (bTitle) bTitle.textContent = 'Bamika';
+            const bSub = win.querySelector('.framer-1lkfvkw h1');
+            if (bSub) bSub.textContent = 'Fresh Food Retailer & Gourmet Catering E-Commerce Platform (بامیکا)';
+          }
+
+          // Container for description & preview
+          const d35 = win.querySelector('.framer-rkv06i > div');
+          if (d35) {
+            const existingHeader = d35.children[0];
+            d35.innerHTML = '';
+            if (existingHeader) d35.appendChild(existingHeader);
+
+            const bodyDiv = document.createElement('div');
+            bodyDiv.innerHTML = `
+              <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 14px 16px; margin: 12px 0; backdrop-filter: blur(10px);">
+                <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #2d3748; margin: 0 0 10px 0;">
+                  Designed and developed the end-to-end <strong>UI/UX design</strong>, responsive e-commerce web platform, and digital brand identity for <strong>Bamika (بامیکا)</strong>, Iran's premier fresh food producer and pioneer in standardized international healthy meal preparation with over 12 years of industry leadership.
+                </p>
+                <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #4a5568; margin: 0 0 12px 0;">
+                  The digital flagship serves more than <strong>70,000 active customers</strong> and <strong>5,000+ corporate clients</strong> (including Snapp!, MAPNA Group, Crouse, and Charisma Financial). The platform features an intuitive right-to-left (RTL) purchasing experience, smart delivery location routing across 7 physical retail branches in Tehran, an interactive party consultation and gourmet catering platter builder (finger foods, artisan salads, canapés, dolmeh, and bakery), dietary lifestyle filters (Low-Calorie, Vegetarian, Organic), and real-time order tracking.
+                </p>
+                <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                  <a href="https://shop.bamika.ir/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #009640; color: #ffffff; border: 1px solid rgba(0,150,64,0.4); text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700; box-shadow: 0 2px 8px rgba(0,150,64,0.25);">
+                    <span>Visit Live Website (shop.bamika.ir)</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                  </a>
+                  <a href="https://shop.bamika.ir/product-category/foods/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #e31e24; color: #ffffff; text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 600; box-shadow: 0 2px 6px rgba(227,30,36,0.25);">
+                    <span>Party & Catering Platters</span>
+                  </a>
+                </div>
+              </div>
+
+              <div style="margin: 14px 0 6px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Type:</div>
+              <div style="font-size: 13.5px; font-weight: 600; color: #2d3748; margin-bottom: 16px;">E-Commerce Platform &gt; UI/UX Design &gt; Fresh Food &amp; Catering &gt; Web Development &gt; RTL Interface</div>
+
+              <div style="margin: 16px 0 8px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Preview:</div>
+              <div style="border-radius: 12px; overflow: hidden; margin-bottom: 14px; width: 100%; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                <img src="./assets/bamika-hero.png" alt="Bamika Homepage Hero Showcase" style="display: block; width: 100%; height: auto; border-radius: 12px; object-fit: cover;">
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; width: 100%;">
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #fdfaf6;">
+                    <img src="./assets/bamika-platters-full.png" alt="Finger Food Platters Showcase" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Gourmet Catering &amp; Finger Food Platters</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Bespoke party platters (Mixed Rata, 4-flavor pizza, sambuseh, dolmeh) with pricing in Tomans.</div>
+                  </div>
+                </div>
+
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #fafafa;">
+                    <img src="./assets/bamika-catalog.png" alt="E-Commerce Catalog & Filters" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Catalog Navigation &amp; Dietary Filters</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Sub-category sidebar with Low-Calorie &amp; Vegetarian toggles and dynamic cart sidebar.</div>
+                  </div>
+                </div>
+
+                <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); border: 1px solid rgba(0,0,0,0.04);">
+                  <div style="aspect-ratio: 16/10; overflow: hidden; background: #f4faf6;">
+                    <img src="./assets/bamika-healthy-diet.png" alt="Healthy Lifestyle & Stats" style="display: block; width: 100%; height: 100%; object-fit: cover;">
+                  </div>
+                  <div style="padding: 10px 12px;">
+                    <div style="font-size: 13px; font-weight: 700; color: #1a202c; margin-bottom: 2px;">Healthy Lifestyle &amp; Enterprise Trust</div>
+                    <div style="font-size: 11.5px; color: #718096; line-height: 1.4;">Corporate metrics (5,000+ corporate clients, 70k+ customers, 7 physical branches).</div>
+                  </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #0e3d23 0%, #175432 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06); display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 20px 16px; color: #ffffff; text-align: center; border: 1px solid rgba(0,168,79,0.25);">
+                  <img src="./assets/bamika-touch-icon.png" alt="Bamika Brand Icon" style="width: 58px; height: 58px; margin-bottom: 10px; border-radius: 14px; box-shadow: 0 4px 14px rgba(0,0,0,0.25);">
+                  <div style="font-size: 15px; font-weight: 800; letter-spacing: 0.05em; color: #ffffff;">BAMIKA &bull; بامیکا</div>
+                  <div style="font-size: 11px; opacity: 0.85; margin-top: 3px; color: #d1fae5;">Fresh Daily Food &amp; Gourmet Catering Since 2012</div>
+                </div>
+              </div>
+
+              <div style="margin: 16px 0 8px 0; font-size: 13px; font-weight: 700; color: #718096; text-transform: uppercase; letter-spacing: 0.05em;">Credits:</div>
+              <div style="display: grid; grid-template-columns: 80px 1fr; gap: 8px 14px; font-size: 12.5px; margin-bottom: 18px;">
+                <div style="text-align: right; color: #718096; font-weight: 600;">Role:</div>
+                <div style="color: #1a202c; font-weight: 600;">UI/UX Designer &amp; Web Developer (Amirali Saleh)</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Client:</div>
+                <div style="color: #1a202c; font-weight: 600;">Bamika Fresh Food &amp; Catering (بامیکا — Tehran, Iran)</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Scale:</div>
+                <div style="color: #1a202c; font-weight: 600;">70,000+ Active Customers &bull; 5,000+ Corporate Clients &bull; 7 Physical Retail Stores</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Stack:</div>
+                <div style="color: #1a202c; font-weight: 600;">WordPress, WooCommerce, Custom Responsive CSS (RTL), PHP, LiteSpeed</div>
+                <div style="text-align: right; color: #718096; font-weight: 600;">Live:</div>
+                <div><a href="https://shop.bamika.ir/" target="_blank" rel="noopener noreferrer" style="color: #009640; font-weight: 600; text-decoration: underline;">shop.bamika.ir</a></div>
+              </div>
+            `;
+            d35.appendChild(bodyDiv);
+          } else {
+            // Standard modal fallback
+            const descContainer = win.querySelector('.framer-1u8nyh1, .framer-1ceu7sa');
+            if (descContainer) {
+              descContainer.innerHTML = `
+                <div style="background: rgba(255,255,255,0.7); border: 1px solid rgba(0,0,0,0.06); border-radius: 12px; padding: 14px 16px; margin-bottom: 12px; backdrop-filter: blur(10px);">
+                  <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #2d3748; margin: 0 0 10px 0;">
+                    Designed and developed the end-to-end <strong>UI/UX design</strong>, responsive e-commerce web platform, and digital brand identity for <strong>Bamika (بامیکا)</strong>, Iran's premier fresh food producer with over 12 years of industry leadership.
+                  </p>
+                  <p dir="auto" class="framer-text" style="font-family: inherit; font-size: 13.5px; line-height: 1.6; font-weight: 500; text-align: left; color: #4a5568; margin: 0 0 12px 0;">
+                    The digital flagship serves more than <strong>70,000 active customers</strong> and <strong>5,000+ corporate clients</strong>, featuring an intuitive RTL interface, smart delivery routing, party catering builder, and dietary filters.
+                  </p>
+                  <div style="display: flex; gap: 10px; align-items: center; flex-wrap: wrap;">
+                    <a href="https://shop.bamika.ir/" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 6px; background: #009640; color: #ffffff; border: 1px solid rgba(0,150,64,0.4); text-decoration: none; padding: 7px 14px; border-radius: 8px; font-size: 12.5px; font-weight: 700;">
+                      <span>Visit Live Website</span>
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7V17"/></svg>
+                    </a>
+                  </div>
+                </div>
+              `;
+            }
+
+            const typeValue = win.querySelector('.framer-puakyo h1');
+            if (typeValue) typeValue.textContent = 'E-Commerce Platform > UI/UX Design > Fresh Food & Catering > RTL Interface';
+
+            const previewContainer = win.querySelector('.framer-m1e43y, .framer-12p9m7w');
+            if (previewContainer) {
+              previewContainer.style.setProperty('height', 'auto', 'important');
+              previewContainer.style.setProperty('min-height', 'auto', 'important');
+              previewContainer.innerHTML = `
+                <div style="border-radius: 12px; overflow: hidden; margin-bottom: 14px; width: 100%; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+                  <img src="./assets/bamika-hero.png" alt="Bamika Hero" style="display: block; width: 100%; height: auto; border-radius: 12px; object-fit: cover;">
+                </div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 14px; width: 100%;">
+                  <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06);">
+                    <img src="./assets/bamika-platters-full.png" alt="Finger Food Platters" style="display: block; width: 100%; height: auto; object-fit: cover;">
+                  </div>
+                  <div style="background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.06);">
+                    <img src="./assets/bamika-catalog.png" alt="Catalog Navigation" style="display: block; width: 100%; height: auto; object-fit: cover;">
+                  </div>
+                </div>
+              `;
+            }
+
+            const creditsValues = win.querySelector('.framer-qivglz, .framer-111hw30');
+            if (creditsValues) {
+              creditsValues.innerHTML = `
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">UI/UX Designer &amp; Web Developer (Amirali Saleh)</p>
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">Bamika Fresh Food &amp; Catering (بامیکا — Tehran, Iran)</p>
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; margin-bottom: 4px; font-weight: 600;">70,000+ Customers &bull; 5,000+ Corporate Clients &bull; 7 Branches</p>
+                <p class="framer-text framer-styles-preset-1783fnb" dir="auto" style="text-align: left; font-weight: 600;"><a href="https://shop.bamika.ir/" target="_blank" rel="noopener noreferrer" style="color: #009640; text-decoration: underline;">shop.bamika.ir</a></p>
               `;
             }
           }
